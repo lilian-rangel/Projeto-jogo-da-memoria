@@ -1,11 +1,36 @@
 @import url(../css/login.css);
+
+main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 20px 50px;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    justify-content: space-between;
+    padding: 30px;
+    margin: 0 0 30px;
+    border-radius: 5px;
+    background-color: rgba(57, 100, 65, 0.8);
+    color: #fff;
+    font-size: 1.2rem;
+}
+
 .grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     width: 100%;
     max-width: 800px;
     gap: 15px;
-    margin: 100px auto;
+    margin: 0 auto;
 
 }
 
