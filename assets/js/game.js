@@ -1,4 +1,6 @@
 const grid = document.querySelector('.grid');
+const spanPlayer = document.querySelector('.player');
+const timer = document.querySelector('.timer');
 
 const characters = [
     'armadillo',
@@ -27,9 +29,25 @@ const checkEndGame = () => {
     const disabledCards = document.querySelectorAll('.disabled-card');
 
     if(disabledCards.length === 20) {
-        alert('Parabéns, você conseguiu!');
+        clearInterval(this.loop);
+        swal.fire({
+            position: 'center',
+            icon: "success",
+            title: `Parabéns, ${spanPlayer.innerHTML}!`,
+            text: `Seu tempo foi: ${timer.innerHTML} `,
+            showConfirmButton: true,
+            confirmButtonText: 'Jogar novamente',
+            confirmButtonColor: '#3085d6',
+            showCancelButton: true,
+            cancelButtonText: 'Fechar',
+            cancelButtonColor: '#d33',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.reload();
+                }
+            })           
     }
-}
+};
 
 const checkCards = () => {
     const firstCharacter = firstCard.getAttribute('data-character');
@@ -108,5 +126,19 @@ const loadGame = () => {
     });
 }
 
-loadGame();
+const startTimer = () => {
+
+   this.loop = setInterval(() => {
+        const currentTime = +timer.innerHTML;
+        timer.innerHTML = currentTime + 1;
+    }, 1000);
+}
+
+window.onload = () => {
+    spanPlayer.innerHTML = localStorage.getItem('player');
+
+    startTimer();
+    loadGame();
+}
+
 
