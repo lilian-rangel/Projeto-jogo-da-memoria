@@ -32,7 +32,9 @@ const checkEndGame = () => {
         clearInterval(this.loop);
         swal.fire({
             position: 'center',
-            icon: "success",
+            imageUrl: '../img/sofa.jpg',
+            imageWidth: 400,
+            imageHeight: 200,
             title: `Parabéns, ${spanPlayer.innerHTML}!`,
             text: `Seu tempo foi: ${timer.innerHTML} `,
             showConfirmButton: true,
